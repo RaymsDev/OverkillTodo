@@ -1,0 +1,8 @@
+<mat-card class="list-card">
+  <mat-card-title class="title">Overkill Todo List </mat-card-title>
+  <mat-action-list>
+    <ng-container *ngFor="let todo of Todos">
+      <button mat-list-item [ngClass]="{ done: todo.isDone }">{{ todo.name }}</button>
+    </ng-container>
+  </mat-action-list>
+</mat-card>
