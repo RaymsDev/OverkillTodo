@@ -29,7 +29,15 @@ export const initialState: IState = {
 const todoReducer = createReducer(
   initialState,
   on(TodoActions.fetch, state => ({ ...state, isFetching: true })),
-  on(TodoActions.receive, (state, action) => ({ ...state, isFetching: false, todos: [...action.todos] }))
+  on(TodoActions.receive, (state, action) => ({ ...state, isFetching: false, todos: [...action.todos] })),
+  on(TodoActions.toggle, (state, action) => ({
+    ...state, todos: [...state.todos.map(todo => {
+      if (todo.id === action.todoId) {
+        todo.isDone = !todo.isDone;
+      }
+      return todo;
+    })]
+  })),
 );
 
 export function reducer(state: IState, action: Action) {
@@ -37,3 +45,5 @@ export function reducer(state: IState, action: Action) {
 }
 
 export const selectAllTodos = (state: IState) => state.todos;
+export const selectDoneTodoList = (state: IState) => state.todos.filter(todo => todo.isDone);
+export const selectUndoneTodoList = (state: IState) => state.todos.filter(todo => !todo.isDone);

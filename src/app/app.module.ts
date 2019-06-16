@@ -1,6 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,11 +19,11 @@ import { TodoPageComponent } from './components/todo-page/todo-page.component';
 import { TodoEffects } from './effects/todo.effects';
 import * as TodoReducer from './reducers/todo.reducer';
 import { InMemTodoService } from './services/inMemoryTodo.service';
-
 const MATERIAL_MODULES = [
   MatListModule,
   MatCardModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatCheckboxModule
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const MATERIAL_MODULES = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemTodoService, { delay: 1000 }),
     StoreModule.forRoot({ todo: TodoReducer.reducer }),

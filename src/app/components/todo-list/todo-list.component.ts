@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITodo } from 'src/app/models/ITodo';
 @Component({
   selector: 'app-todo-list',
@@ -6,10 +6,13 @@ import { ITodo } from 'src/app/models/ITodo';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-
-  @Input() Todos: ITodo[];
+  @Input() UndoneTodoList: ITodo[];
+  @Input() DoneTodoList: ITodo[];
+  @Output() todoToggle = new EventEmitter<number>();
   constructor() { }
-
   ngOnInit() {
+  }
+  public OnClickToggleTodo(todoId) {
+    this.todoToggle.emit(todoId);
   }
 }

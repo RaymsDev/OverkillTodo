@@ -1,5 +1,9 @@
 <mat-spinner *ngIf="IsFetching | async; else isLoaded"></mat-spinner>
 
 <ng-template #isLoaded>
-  <app-todo-list [Todos]="Todos$ | async"></app-todo-list>
+  <app-todo-list
+    [DoneTodoList]="DoneTodoList$ | async"
+    [UndoneTodoList]="UndoneTodoList$ | async"
+    (todoToggle)="onTodoToggle($event)"
+  ></app-todo-list>
 </ng-template>
