@@ -9,17 +9,20 @@ describe('Todo Selectors', () => {
       todos: [{
         id: 1,
         isDone: true,
-        name: 'todo'
+        name: 'todo',
+        description: 'Design is important!'
       },
       {
         id: 2,
         isDone: false,
-        name: 'todo'
+        name: 'todo',
+        description: 'Design is important!'
       },
       {
         id: 3,
         isDone: false,
-        name: 'todo'
+        name: 'todo',
+        description: 'Design is important!'
       }]
     };
   });
@@ -46,17 +49,20 @@ describe('Todo Reducers', () => {
       todos: [{
         id: 1,
         isDone: true,
-        name: 'todo'
+        name: 'todo',
+        description: 'Design is important!'
       },
       {
         id: 2,
         isDone: false,
-        name: 'todo'
+        name: 'todo',
+        description: 'Design is important!'
       },
       {
         id: 3,
         isDone: false,
-        name: 'todo'
+        name: 'todo',
+        description: 'Design is important!'
       }]
     };
   });
@@ -88,7 +94,8 @@ describe('Todo Reducers', () => {
       todos: [{
         id: 1,
         name: 'todo',
-        isDone: true
+        isDone: true,
+        description: 'Design is important!'
       }]
     }));
     // Assert

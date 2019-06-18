@@ -9,21 +9,7 @@ export interface IState {
 
 export const initialState: IState = {
   isFetching: false,
-  todos: [{
-    id: 1,
-    isDone: true,
-    name: 'First todo'
-  },
-  {
-    id: 2,
-    isDone: false,
-    name: 'Second todo'
-  },
-  {
-    id: 3,
-    isDone: false,
-    name: 'Third todo'
-  }]
+  todos: []
 };
 
 const todoReducer = createReducer(
@@ -47,3 +33,4 @@ export function reducer(state: IState, action: Action) {
 export const selectAllTodos = (state: IState) => state.todos;
 export const selectDoneTodoList = (state: IState) => state.todos.filter(todo => todo.isDone);
 export const selectUndoneTodoList = (state: IState) => state.todos.filter(todo => !todo.isDone);
+export const selectTodo = (state: IState, todoId: number) => state.todos.find(todo => todo.id === todoId);

@@ -11,8 +11,6 @@ import { IState as TodoState, selectDoneTodoList, selectUndoneTodoList } from '.
   styleUrls: ['./todo-page.component.scss']
 })
 export class TodoPageComponent implements OnInit {
-
-
   public UndoneTodoList$: Observable<ITodo[]> = this.store.select(state => selectUndoneTodoList(state.todo));
   public DoneTodoList$: Observable<ITodo[]> = this.store.select(state => selectDoneTodoList(state.todo));
   public IsFetching: Observable<boolean> = this.store.select(state => state.todo.isFetching);

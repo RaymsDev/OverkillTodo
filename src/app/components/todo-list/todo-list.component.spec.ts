@@ -1,20 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatListModule } from '@angular/material/list';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ITodo } from 'src/app/models/ITodo';
+import { SharedModule } from 'src/app/shared.module';
 import { TodoListComponent } from './todo-list.component';
-
-const MATERIAL_MODULES = [
-  MatListModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatCheckboxModule
-];
-
-
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
@@ -23,7 +12,7 @@ describe('TodoListComponent', () => {
   beforeEach((async () => {
     TestBed.configureTestingModule({
       declarations: [TodoListComponent],
-      imports: [...MATERIAL_MODULES],
+      imports: [SharedModule, RouterTestingModule.withRoutes([])],
       providers: []
     }).compileComponents();
 
@@ -33,12 +22,14 @@ describe('TodoListComponent', () => {
     todoList = [{
       id: 1,
       name: 'My Todo',
-      isDone: true
+      isDone: true,
+      description: 'Design is important!'
     },
     {
       id: 2,
       name: 'My Todo 2',
-      isDone: true
+      isDone: true,
+      description: 'Design is important!'
     }];
 
     fixture = TestBed.createComponent(TodoListComponent);
@@ -53,11 +44,11 @@ describe('TodoListComponent', () => {
 
   it('should display todo name', () => {
     const todoListElement: HTMLElement = fixture.debugElement.nativeElement;
-    const buttonList = todoListElement.querySelectorAll('button');
+    const buttonList = todoListElement.querySelectorAll('.todo-content span');
 
-    for (let index = 0; index < buttonList.length; index++) {
-      expect(buttonList[index].textContent).toEqual(todoList[index].name);
-    }
+
+    expect(buttonList[0].textContent.trim()).toEqual(todoList[0].name.trim());
+
   });
 
 

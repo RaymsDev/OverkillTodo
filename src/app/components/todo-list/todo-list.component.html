@@ -3,19 +3,20 @@
   <mat-selection-list>
     <ng-container *ngFor="let todo of UndoneTodoList">
       <mat-list-option checkboxPosition="before" [selected]="todo.isDone" (click)="OnClickToggleTodo(todo.id)">
-        {{ todo.name }}
+        <div class="todo-content">
+          <span>{{ todo.name }}</span
+          ><button mat-stroked-button color="accent" (click)="OnClickNavigate($event, todo.id)">Details</button>
+        </div>
       </mat-list-option>
     </ng-container>
   </mat-selection-list>
   <mat-selection-list>
     <ng-container *ngFor="let todo of DoneTodoList">
-      <mat-list-option
-        class="done"
-        checkboxPosition="before"
-        [selected]="todo.isDone"
-        (click)="OnClickToggleTodo(todo.id)"
-      >
-        {{ todo.name }}
+      <mat-list-option checkboxPosition="before" [selected]="todo.isDone" (click)="OnClickToggleTodo(todo.id)">
+        <div class="todo-content">
+          <span class="done">{{ todo.name }}</span
+          ><button mat-stroked-button color="accent" (click)="OnClickNavigate($event, todo.id)">Details</button>
+        </div>
       </mat-list-option>
     </ng-container>
   </mat-selection-list>

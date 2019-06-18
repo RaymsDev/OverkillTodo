@@ -1,19 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatListModule } from '@angular/material/list';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Store, StoreModule } from '@ngrx/store';
+import { SharedModule } from 'src/app/shared.module';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import * as TodoActions from './../../actions/todo.actions';
 import { IState as TodoState, reducer as TodoReducer } from './../../reducers/todo.reducer';
 import { TodoPageComponent } from './todo-page.component';
-const MATERIAL_MODULES = [
-  MatListModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatCheckboxModule
-];
+
 
 describe('TodoPageComponent', () => {
   let component: TodoPageComponent;
@@ -24,10 +17,11 @@ describe('TodoPageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TodoPageComponent, TodoListComponent],
       imports: [
-        ...MATERIAL_MODULES,
+        SharedModule,
         StoreModule.forRoot({
           todo: TodoReducer,
         }),
+        RouterTestingModule.withRoutes([]),
       ],
     });
 
