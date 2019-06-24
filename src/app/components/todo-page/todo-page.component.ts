@@ -20,8 +20,11 @@ export class TodoPageComponent implements OnInit {
     this.store.dispatch(TodoActions.fetch());
   }
 
-  onTodoToggle(todoId: number) {
-    this.store.dispatch(TodoActions.toggle({ todoId }));
+  onTodoToggle(todo: ITodo) {
+    this.store.dispatch(TodoActions.update({
+      id: todo.id,
+      todo
+    }));
   }
 
 }

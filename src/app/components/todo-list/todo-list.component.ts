@@ -9,12 +9,13 @@ import { ITodo } from 'src/app/models/ITodo';
 export class TodoListComponent implements OnInit {
   @Input() UndoneTodoList: ITodo[];
   @Input() DoneTodoList: ITodo[];
-  @Output() todoToggle = new EventEmitter<number>();
+  @Output() todoToggle = new EventEmitter<ITodo>();
   constructor(private router: Router) { }
   ngOnInit() {
   }
-  public OnClickToggleTodo(todoId: number) {
-    this.todoToggle.emit(todoId);
+  public OnClickToggleTodo(todo: ITodo) {
+    todo.isDone = !todo.isDone;
+    this.todoToggle.emit(todo);
   }
 
   public OnClickNavigate(event: Event, todoId: number) {

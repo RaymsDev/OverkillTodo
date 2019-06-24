@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -33,7 +32,6 @@ import { SharedModule } from './shared.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterTestingModule.withRoutes([]),
     HttpClientInMemoryWebApiModule.forRoot(InMemTodoService, { delay: 1000 }),
     StoreModule.forRoot({ todo: TodoReducer.reducer }),
     BrowserAnimationsModule,

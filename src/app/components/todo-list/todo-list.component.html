@@ -2,7 +2,7 @@
   <mat-card-title class="title">Overkill Todo List </mat-card-title>
   <mat-selection-list>
     <ng-container *ngFor="let todo of UndoneTodoList">
-      <mat-list-option checkboxPosition="before" [selected]="todo.isDone" (click)="OnClickToggleTodo(todo.id)">
+      <mat-list-option checkboxPosition="before" [selected]="todo.isDone" (click)="OnClickToggleTodo(todo)">
         <div class="todo-content">
           <span>{{ todo.name }}</span
           ><button mat-stroked-button color="accent" (click)="OnClickNavigate($event, todo.id)">Details</button>
@@ -12,7 +12,7 @@
   </mat-selection-list>
   <mat-selection-list>
     <ng-container *ngFor="let todo of DoneTodoList">
-      <mat-list-option checkboxPosition="before" [selected]="todo.isDone" (click)="OnClickToggleTodo(todo.id)">
+      <mat-list-option checkboxPosition="before" [selected]="todo.isDone" (click)="OnClickToggleTodo(todo)">
         <div class="todo-content">
           <span class="done">{{ todo.name }}</span
           ><button mat-stroked-button color="accent" (click)="OnClickNavigate($event, todo.id)">Details</button>

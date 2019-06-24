@@ -5,6 +5,7 @@ describe('Todo Selectors', () => {
   let initialTodoState: TodoReducer.IState;
   beforeEach(() => {
     initialTodoState = {
+      isLoaded: false,
       isFetching: false,
       todos: [{
         id: 1,
@@ -45,6 +46,7 @@ describe('Todo Reducers', () => {
   let initialTodoState: TodoReducer.IState;
   beforeEach(() => {
     initialTodoState = {
+      isLoaded: false,
       isFetching: false,
       todos: [{
         id: 1,
@@ -104,8 +106,14 @@ describe('Todo Reducers', () => {
 
   it('should update todo state on action toggle', () => {
     // Act
-    const actualState = TodoReducer.reducer(initialTodoState, TodoActions.toggle({ todoId: initialTodoState.todos[0].id }));
+    const actualState = TodoReducer.reducer(initialTodoState,
+      TodoActions.updated({
+        todo: {
+          ...initialTodoState.todos[0],
+          isDone: false
+        }
+      }));
     // Assert
-    expect(actualState.todos[0].isDone).toBeFalsy(initialTodoState.todos[0].isDone);
+    expect(actualState.todos[0].isDone).toBe(false);
   });
 });

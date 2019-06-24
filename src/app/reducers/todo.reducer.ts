@@ -3,23 +3,27 @@ import { ITodo } from '../models/ITodo';
 import * as TodoActions from './../actions/todo.actions';
 
 export interface IState {
+  isLoaded: boolean;
   isFetching: boolean;
   todos: ITodo[];
 }
 
 export const initialState: IState = {
+  isLoaded: false,
   isFetching: false,
   todos: []
 };
 
 const todoReducer = createReducer(
   initialState,
-  on(TodoActions.fetch, state => ({ ...state, isFetching: true })),
+  on(TodoActions.fetch, state => ({ ...state, isFetching: true, isLoaded: true })),
   on(TodoActions.receive, (state, action) => ({ ...state, isFetching: false, todos: [...action.todos] })),
-  on(TodoActions.toggle, (state, action) => ({
+  on(TodoActions.updated, (state, action) => ({
     ...state, todos: [...state.todos.map(todo => {
-      if (todo.id === action.todoId) {
-        todo.isDone = !todo.isDone;
+      if (todo.id === action.todo.id) {
+        return {
+          ...action.todo
+        };
       }
       return todo;
     })]
@@ -34,3 +38,4 @@ export const selectAllTodos = (state: IState) => state.todos;
 export const selectDoneTodoList = (state: IState) => state.todos.filter(todo => todo.isDone);
 export const selectUndoneTodoList = (state: IState) => state.todos.filter(todo => !todo.isDone);
 export const selectTodo = (state: IState, todoId: number) => state.todos.find(todo => todo.id === todoId);
+export const selectIsAlreadyLoaded = (state: IState) => state.isLoaded;

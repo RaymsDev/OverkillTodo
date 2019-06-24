@@ -53,15 +53,15 @@ describe('TodoListComponent', () => {
 
 
   it('should trigger event when todo is clicked', () => {
-    let actualTodoId: number;
+    let actualTodo: ITodo;
     const todoItemElement = fixture.debugElement.query(By.css('mat-list-option'));
 
-    component.todoToggle.subscribe(todoId => {
-      actualTodoId = todoId;
+    component.todoToggle.subscribe(todo => {
+      actualTodo = todo;
     });
 
-    todoItemElement.triggerEventHandler('click', todoList[0].id);
-    expect(actualTodoId).toBe(todoList[0].id);
+    todoItemElement.triggerEventHandler('click', todoList[0]);
+    expect(actualTodo).toBe(todoList[0]);
   });
 
 });
