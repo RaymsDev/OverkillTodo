@@ -30,6 +30,14 @@ export class TodoService implements ITodoService {
       );
   }
 
+  public Create(todo: Partial<ITodo>): Observable<ITodo> {
+    todo.createdAt = new Date();
+    return this.httpClient.post<ITodo>(TodoService.url, todo, options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   private handleError(error: any) {
     // In real world => logger
     console.error(error);

@@ -13,7 +13,10 @@ import { IState as TodoState, selectIsAlreadyLoaded, selectTodo } from './../../
 })
 export class TodoDetailsComponent implements OnInit {
   public Todo$: Observable<ITodo>;
-  constructor(private route: ActivatedRoute, private store: Store<{ todo: TodoState }>) { }
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<{ todo: TodoState }>
+  ) { }
 
   ngOnInit() {
     this.Todo$ = this.route.paramMap.pipe(

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { TodoPageComponent } from './components/todo-page/todo-page.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'todos/:id/details',
     component: TodoDetailsComponent
+  },
+  {
+    path: 'todos/create',
+    component: TodoFormComponent
   }
 ];
 

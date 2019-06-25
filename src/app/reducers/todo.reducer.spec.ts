@@ -11,19 +11,22 @@ describe('Todo Selectors', () => {
         id: 1,
         isDone: true,
         name: 'todo',
-        description: 'Design is important!'
+        description: 'Design is important!',
+        createdAt: new Date()
       },
       {
         id: 2,
         isDone: false,
         name: 'todo',
-        description: 'Design is important!'
+        description: 'Design is important!',
+        createdAt: new Date()
       },
       {
         id: 3,
         isDone: false,
         name: 'todo',
-        description: 'Design is important!'
+        description: 'Design is important!',
+        createdAt: new Date()
       }]
     };
   });
@@ -52,19 +55,22 @@ describe('Todo Reducers', () => {
         id: 1,
         isDone: true,
         name: 'todo',
-        description: 'Design is important!'
+        description: 'Design is important!',
+        createdAt: new Date()
       },
       {
         id: 2,
         isDone: false,
         name: 'todo',
-        description: 'Design is important!'
+        description: 'Design is important!',
+        createdAt: new Date()
       },
       {
         id: 3,
         isDone: false,
         name: 'todo',
         description: 'Design is important!'
+        , createdAt: new Date()
       }]
     };
   });
@@ -97,7 +103,8 @@ describe('Todo Reducers', () => {
         id: 1,
         name: 'todo',
         isDone: true,
-        description: 'Design is important!'
+        description: 'Design is important!',
+        createdAt: new Date()
       }]
     }));
     // Assert

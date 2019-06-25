@@ -24,12 +24,14 @@ describe('TodoListComponent', () => {
       name: 'My Todo',
       isDone: true,
       description: 'Design is important!'
+      , createdAt: new Date()
     },
     {
       id: 2,
       name: 'My Todo 2',
       isDone: true,
       description: 'Design is important!'
+      , createdAt: new Date()
     }];
 
     fixture = TestBed.createComponent(TodoListComponent);

@@ -13,10 +13,10 @@ describe('TodoService', () => {
   let request: TestRequest;
 
   const todoList: ITodo[] = [
-    { id: 1, name: 'Design', isDone: true, description: 'Design is important!' },
-    { id: 2, name: 'Code', isDone: false, description: 'Design is important!' },
-    { id: 3, name: 'Test', isDone: false, description: 'Design is important!' },
-    { id: 4, name: 'Deploy', isDone: false, description: 'Design is important!' },
+    { id: 1, name: 'Design', isDone: true, description: 'Design is important!', createdAt: new Date() },
+    { id: 2, name: 'Code', isDone: false, description: 'Design is important!', createdAt: new Date() },
+    { id: 3, name: 'Test', isDone: false, description: 'Design is important!', createdAt: new Date() },
+    { id: 4, name: 'Deploy', isDone: false, description: 'Design is important!', createdAt: new Date() },
   ];
 
   beforeEach(() => {

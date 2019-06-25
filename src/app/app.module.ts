@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoPageComponent } from './components/todo-page/todo-page.component';
 import { TodoEffects } from './effects/todo.effects';
@@ -26,11 +27,13 @@ import { SharedModule } from './shared.module';
     TodoListComponent,
     TodoPageComponent,
     TodoDetailsComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemTodoService, { delay: 1000 }),
     StoreModule.forRoot({ todo: TodoReducer.reducer }),

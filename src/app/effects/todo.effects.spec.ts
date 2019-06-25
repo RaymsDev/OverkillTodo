@@ -1,7 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { ReplaySubject } from 'rxjs';
+import { SharedModule } from '../shared.module';
 import { TodoEffects } from './todo.effects';
 
 describe('Todo Effects', () => {
@@ -11,7 +13,9 @@ describe('Todo Effects', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        SharedModule,
+        NoopAnimationsModule
       ],
       providers: [
         TodoEffects,
