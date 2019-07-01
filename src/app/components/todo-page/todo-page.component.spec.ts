@@ -7,7 +7,6 @@ import * as TodoActions from './../../actions/todo.actions';
 import { IState as TodoState, reducer as TodoReducer } from './../../reducers/todo.reducer';
 import { TodoPageComponent } from './todo-page.component';
 
-
 describe('TodoPageComponent', () => {
   let component: TodoPageComponent;
   let fixture: ComponentFixture<TodoPageComponent>;
@@ -34,7 +33,6 @@ describe('TodoPageComponent', () => {
     fixture.detectChanges();
   });
 
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -43,6 +41,16 @@ describe('TodoPageComponent', () => {
     component.ngOnInit();
     const action = TodoActions.fetch();
 
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
+
+  it('should dispatch update todo action', () => {
+    // arrange
+    const todo = { id: 1, name: 'Design', isDone: true, description: 'Design is important!', createdAt: new Date() };
+    // act
+    component.OnTodoToggle(todo);
+    // assert
+    const action = TodoActions.update({ id: 1, todo });
     expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 });
