@@ -8,15 +8,11 @@ import { IState as TodoState } from './../../reducers/todo.reducer';
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
-  styleUrls: ['./todo-form.component.scss']
+  styleUrls: ['./todo-form.component.scss'],
 })
 export class TodoFormComponent implements OnInit {
   public TodoForm: FormGroup;
-  constructor(
-    private formBuilder: FormBuilder,
-    private store: Store<{ todo: TodoState }>,
-    private router: Router
-  ) { }
+  constructor(private formBuilder: FormBuilder, private store: Store<{ todo: TodoState }>, private router: Router) {}
 
   ngOnInit() {
     this.initTodoForm();
@@ -25,23 +21,21 @@ export class TodoFormComponent implements OnInit {
   private initTodoForm(): void {
     this.TodoForm = this.formBuilder.group({
       name: ['', Validators.required],
-      description: ['']
+      description: [''],
     });
   }
 
-  public OnSubmit(formDirective: FormGroupDirective): void {
+  public OnSubmit(): void {
     if (this.TodoForm.valid) {
       const todo: Partial<ITodo> = {
         name: this.TodoForm.value.name,
         description: this.TodoForm.value.description,
       };
       this.store.dispatch(TodoActions.create({ todo }));
-      formDirective.resetForm();
       this.TodoForm.reset({
         name: '',
-        description: ''
+        description: '',
       });
     }
   }
-
 }
